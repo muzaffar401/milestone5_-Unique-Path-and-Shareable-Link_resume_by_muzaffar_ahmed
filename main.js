@@ -66,7 +66,7 @@ function displayUploadedImage() {
         });
         var usernameElement = document.getElementById('username').value;
         var uniquePath_1 = "resume/".concat(usernameElement.replace(/\s+/g, ''), "_cv.html");
-        var resumeData_1 = "\n        <h2>RESUME</h2>\n        <h2>Personal Information</h2>\n        ".concat(uploadedImageSrc ? "<p><img src=\"".concat(uploadedImageSrc, "\" alt=\"Profile Image\" style=\"width: 100px; height: 100px;\" id=\"resume_image\"></p>") : '', "\n        <p><strong>Name :</strong> ").concat(name_1, "</p>\n        <p><strong>Email :</strong> ").concat(email, "</p>\n        <p><strong>Phone Number :</strong> ").concat(phone, "</p>\n        <h2>Education</h2>\n        <p>").concat(education, "</p>\n        <h2>Experience</h2>\n        <p>").concat(experience, "</p>\n        <h2>Skills</h2>\n        <p>").concat(skills, "</p>\n        ");
+        var resumeData_1 = "\n        <h2>RESUME</h2>\n        <h2>Personal Information</h2>\n        <h1 style=\"display:none;\"><p><strong>URL :</strong> ".concat(usernameElement, "</p> </h1>\n        ").concat(uploadedImageSrc ? "<p><img src=\"".concat(uploadedImageSrc, "\" alt=\"Profile Image\" style=\"width: 100px; height: 100px;\" id=\"resume_image\"></p>") : '', "\n        <p><strong>Name :</strong> ").concat(name_1, "</p>\n        <p><strong>Email :</strong> ").concat(email, "</p>\n        <p><strong>Phone Number :</strong> ").concat(phone, "</p>\n        <h2>Education</h2>\n        <p>").concat(education, "</p>\n        <h2>Experience</h2>\n        <p>").concat(experience, "</p>\n        <h2>Skills</h2>\n        <p>").concat(skills, "</p>\n        ");
         var resumeDataElement = document.getElementById('resume_data');
         if (resumeDataElement) {
             resumeDataElement.innerHTML = resumeData_1;
@@ -106,19 +106,22 @@ function enableResumeEditing() {
         var educationElement = document.getElementById('education');
         var experienceElement = document.getElementById('experience');
         var skillsElement = document.getElementById('skills');
-        var urlElement = document.getElementById('username');
+        var usernameElement = document.getElementById('username');
+        // Populate form fields with extracted data
         nameElement.value = extractResumeData('Name', resumeHtml);
         emailElement.value = extractResumeData('Email', resumeHtml);
         phoneElement.value = extractResumeData('Phone Number', resumeHtml);
         educationElement.value = extractResumeData('Education', resumeHtml);
         experienceElement.value = extractResumeData('Experience', resumeHtml);
         skillsElement.value = extractResumeData('Skills', resumeHtml);
-        var previousURL = extractResumeData('URL', resumeHtml); // Assuming 'URL' was saved as part of resume
-        urlElement.value = previousURL;
+        // Populate the usernameElement with the previously entered URL (username)
+        var previousUsername = extractResumeData('URL', resumeHtml);
+        usernameElement.value = previousUsername;
         // Set the previous image if available
         var previousImageSrc = extractResumeImageSrc(resumeHtml);
         uploadedImageSrc = previousImageSrc;
         displayUploadedImage();
+        // Scroll back to the form for editing
         (_a = document.getElementById('resume_form')) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: 'smooth' });
     }
 }
