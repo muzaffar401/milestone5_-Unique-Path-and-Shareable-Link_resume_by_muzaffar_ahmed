@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Unique Path and Shareable Link Resume Builder By Muzaffar Ahmed</h1>
+
+    <form id="resume_form">
+        <fieldset>
+            <legend>Personal Information</legend>
+
+
+            <label for="username">Resume URL</label>
+            <input type="text" name="username" id="username" onkeyup="validateAll()">
+            <span id="urlname_error" class="error"></span>
+
+            <label for="profile_image">Profile Image :</label>
+            <input type="file" id="profile_image" name="profile_image" accept="image/*" onkeyup="validateAll()">
+            <span id="image_error" class="error"></span>
+
+            <label for="name">Name :</label>
+            <input type="text" name="name" id="name" onkeyup="validateAll()">
+            <span id="name_error" class="error"></span>
+
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" onkeyup="validateAll()">
+            <span id="email_error" class="error"></span>
+
+            <label for="phone">Phone :</label>
+            <input type="tel" id="phone" name="phone" onkeyup="validateAll()">
+            <span id="phone_error" class="error"></span>
+        </fieldset>
+
+        <fieldset>
+            <legend>Education</legend>
+            <label for="education">Education :</label>
+            <textarea name="education" id="education" rows="4" onkeyup="validateAll()"></textarea>
+            <span id="education_error" class="error"></span>
+        </fieldset>
+
+        <fieldset>
+            <legend>Experience</legend>
+            <label for="experience">Experience :</label>
+            <textarea name="experience" id="experience" rows="4" onkeyup="validateAll()"></textarea>
+            <span id="experience_error" class="error"></span>
+        </fieldset>
+
+        <fieldset>
+            <legend>Skills</legend>
+            <label for="skills">Skills :</label>
+            <textarea name="skills" id="skills" rows="4" onkeyup="validateAll()"></textarea>
+            <span id="skills_error" class="error"></span>
+        </fieldset>
+
+        <button type="submit">Generate Resume Below</button>
+    </form>
+
+    <div id="resume_container">
+        <div id="resume_data"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+h1{
+    text-align: center;
+    color: #2c3e50;
+}
+
+form{
+    max-width: 600px;
+    margin: auto;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+fieldset{
+    border: 2px solid #30a02d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: aliceblue;
+}
+
+legend{
+    font-weight: bold;
+    text-align: left;
+    color: #2c3e50;
+}
+
+label{
+    display: block;
+    margin-top: 10px;
+    color: #2c3e50;
+}
+
+input,textarea{
+    width: calc(100% - 1px);
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #30a02d;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input:focus,
+textarea:focus {
+    border: 1px solid #30a02d!important;
+    outline: none;
+}
+
+
+button{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+button:hover{
+    background-color: black;
+    transition: all .5s;
+}
+
+#resume_data{
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 2px #30a02d;
+    border-radius: 8px;
+    background-color: aliceblue;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+#resume_data h2{
+color: #2c3e58;
+}
+
+.error{
+    color: red;
+}
+
+img {
+    border-radius: 50%;
+    max-width: 150px;
+    height: auto;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
