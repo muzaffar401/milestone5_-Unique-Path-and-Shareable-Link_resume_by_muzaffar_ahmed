@@ -74,9 +74,10 @@ document.getElementById('resume_form')?.addEventListener('submit', function (eve
 
 
         const resumeData =
-            `
+        `
         <h2>RESUME</h2>
         <h2>Personal Information</h2>
+        <h1 style="display:none;"><p><strong>URL :</strong> ${usernameElement}</p> </h1>
         ${uploadedImageSrc ? `<p><img src="${uploadedImageSrc}" alt="Profile Image" style="width: 100px; height: 100px;" id="resume_image"></p>` : ''}
         <p><strong>Name :</strong> ${name}</p>
         <p><strong>Email :</strong> ${email}</p>
@@ -88,8 +89,9 @@ document.getElementById('resume_form')?.addEventListener('submit', function (eve
         <h2>Skills</h2>
         <p>${skills}</p>
         `;
+    
 
-      
+
 
         const resumeDataElement = document.getElementById('resume_data') as HTMLElement;
         if (resumeDataElement) {
@@ -97,7 +99,7 @@ document.getElementById('resume_form')?.addEventListener('submit', function (eve
             resumeDataElement.style.display = 'block';
             addEditButton();
 
-            resumeDataElement.appendChild(downloadButton); 
+            resumeDataElement.appendChild(downloadButton);
         }
 
         const formElement = document.getElementById('resume_form') as HTMLFormElement;
@@ -139,9 +141,9 @@ function enableResumeEditing(): void {
         const educationElement = document.getElementById('education') as HTMLTextAreaElement;
         const experienceElement = document.getElementById('experience') as HTMLTextAreaElement;
         const skillsElement = document.getElementById('skills') as HTMLTextAreaElement;
-        const urlElement = document.getElementById('username') as HTMLInputElement; 
+        const usernameElement = document.getElementById('username') as HTMLInputElement;
 
-
+        // Populate form fields with extracted data
         nameElement.value = extractResumeData('Name', resumeHtml);
         emailElement.value = extractResumeData('Email', resumeHtml);
         phoneElement.value = extractResumeData('Phone Number', resumeHtml);
@@ -149,17 +151,20 @@ function enableResumeEditing(): void {
         experienceElement.value = extractResumeData('Experience', resumeHtml);
         skillsElement.value = extractResumeData('Skills', resumeHtml);
 
-        const previousURL = extractResumeData('URL', resumeHtml); // Assuming 'URL' was saved as part of resume
-        urlElement.value = previousURL;
+        // Populate the usernameElement with the previously entered URL (username)
+        const previousUsername = extractResumeData('URL', resumeHtml); 
+        usernameElement.value = previousUsername;
 
         // Set the previous image if available
         const previousImageSrc = extractResumeImageSrc(resumeHtml);
         uploadedImageSrc = previousImageSrc;
         displayUploadedImage();
 
+        // Scroll back to the form for editing
         document.getElementById('resume_form')?.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
 
 function extractResumeData(label: string, html: string): string {
     let regex;
@@ -305,27 +310,27 @@ function validateImage(): boolean {
 function validateUserURL() {
     const nameElement = document.getElementById('username') as HTMLInputElement;
     const nameError = document.getElementById('urlname_error')!;
-    
+
     const nameRegex = /^[a-z]+$/; // only lowercase letters, no spaces, no numbers
-    
+
     // Check if the field is empty
     if (nameElement.value.length === 0) {
         nameError.textContent = 'Please fill out this field.';
         return false;
-    } 
-    
+    }
+
     // Check if name contains capital letters, numbers, or spaces
     else if (!nameRegex.test(nameElement.value)) {
         nameError.textContent = 'Invalid name. Only lowercase letters allowed, no spaces or numbers.';
         return false;
-    } 
-    
+    }
+
     // Check if the length is less than 3 or greater than 12 characters
     else if (nameElement.value.length < 3 || nameElement.value.length > 12) {
         nameError.textContent = 'Name must be between 3 and 12 characters long.';
         return false;
-    } 
-    
+    }
+
     // If all validations pass
     else {
         nameError.textContent = '';
